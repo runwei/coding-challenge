@@ -25,6 +25,7 @@ class Socialgraph:
                 self.removeLogs()
                 self.calAvgDegree()
 
+## Go through the log and disconnect links until curtime-60seconds
     def removeLogs(self):
         while len(self.log) !=0:
             elem = self.log[0]
@@ -34,6 +35,7 @@ class Socialgraph:
             else:
                 break
 
+## Extract a list of hashtags in a certain tweet text
     def extractHashtag(self,datatext):
         taglist = []
         loc = -1
@@ -48,6 +50,7 @@ class Socialgraph:
                 taglist.append(datatext[loc:])
         return taglist
 
+# Connect a group of hashtags altogether
     def groupConnect(self,taglist):
         length = len(taglist)
         if length >= 2:
@@ -55,6 +58,7 @@ class Socialgraph:
                 for j in xrange(i+1,length):
                     self.Connect(taglist[i],taglist[j])
 
+# Disconnect a group of hashtags if the links between them has not been updated for 60 seconds
     def groupDisconnect(self,taglist):
         length = len(taglist)
         if length >= 2:
@@ -62,15 +66,18 @@ class Socialgraph:
                 for j in xrange(i+1,length):
                     self.Disconnect(taglist[i],taglist[j])
 
+# Caluculate the average degree in the social graph
     def calAvgDegree(self):
         if len(self.nodeLink) == 0:
-            return 0.0
-        sumdegree = 0.0
-        for elem in self.nodeLink:
-            sumdegree +=len(self.nodeLink[elem])
-        avgdegree = sumdegree/len(self.nodeLink)
+            avgdegree = 0.0
+        else:
+            sumdegree = 0.0
+            for elem in self.nodeLink:
+                sumdegree +=len(self.nodeLink[elem])
+            avgdegree = sumdegree/len(self.nodeLink)
         self.filewrite.write("%.2f\n"%avgdegree)
 
+# Connect two hashtags in the social graph
     def Connect(self,word1,word2):
         if word1 not in self.nodeLink:
             self.nodeLink[word1] = {word2:self.curtime}
@@ -81,6 +88,7 @@ class Socialgraph:
         else:
             self.nodeLink[word2][word1] = self.curtime
 
+# Disconnect two hashtags in the social graph if the link has not been updated for 60 seconds
     def Disconnect(self,word1,word2):
         if word1 in self.nodeLink:
             if word2 in self.nodeLink[word1] and self.nodeLink[word1][word2]<self.curtime-60:
@@ -101,5 +109,8 @@ if __name__ == '__main__':
     if len(sys.argv)>1:
         input = sys.argv[1]
         output = sys.argv[2]
+    else:
+        input = "../tweet_input/tweets.txt"
+        output = "../tweet_output/ft2.txt"
     sg = Socialgraph(input,output)
     sg.processfile()
