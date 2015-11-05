@@ -1,9 +1,12 @@
 # example of program that calculates the average degree of hashtags
 import json
 import collections
+from itertools import combinations
+from re import findall
 from datetime import datetime
 import time
 import sys
+import re
 
 class Socialgraph:
     def __init__(self,fileread,filewrite):
@@ -14,9 +17,12 @@ class Socialgraph:
         self.log = collections.deque() # the moving window of {time:hashtags}
 
     def processfile(self):
+        count =0
         for line in self.fileread:
             data = json.loads(line)
             if 'text' in data and 'created_at' in data:
+                count += 1
+                print count
                 texttime = data['created_at'].encode('ascii','ignore')
                 self.curtime = time.mktime(datetime.strptime(texttime,'%a %b %d %H:%M:%S +0000 %Y').timetuple())
                 taglist = self.extractHashtag(data['text'].encode('ascii','ignore'))
@@ -37,20 +43,9 @@ class Socialgraph:
 
 ## Extract a list of hashtags in a certain tweet text
     def extractHashtag(self,datatext):
-        taglist = []
-        loc = -1
-        flag = True
-        while loc != -1 or flag:
-            flag = False
-            loc = datatext.find('#',loc+1)
-            loc2 = datatext.find(' ',loc)
-            if loc !=-1 and loc2 != -1:
-                taglist.append(datatext[loc:loc2])
-            elif loc != -1:
-                taglist.append(datatext[loc:])
-        return taglist
+        return findall(r'#\w*', datatext.lower())
 
-# Connect a group of hashtags altogether
+## Connect a group of hashtags altogether
     def groupConnect(self,taglist):
         length = len(taglist)
         if length >= 2:
@@ -58,7 +53,7 @@ class Socialgraph:
                 for j in xrange(i+1,length):
                     self.Connect(taglist[i],taglist[j])
 
-# Disconnect a group of hashtags if the links between them has not been updated for 60 seconds
+## Disconnect a group of hashtags if the links between them has not been updated for 60 seconds
     def groupDisconnect(self,taglist):
         length = len(taglist)
         if length >= 2:
@@ -75,7 +70,7 @@ class Socialgraph:
             for elem in self.nodeLink:
                 sumdegree +=len(self.nodeLink[elem])
             avgdegree = sumdegree/len(self.nodeLink)
-        self.filewrite.write("%.2f\n"%avgdegree)
+        self.filewrite.write("%.4f\n"%avgdegree)
 
 # Connect two hashtags in the social graph
     def Connect(self,word1,word2):
@@ -104,6 +99,11 @@ class Socialgraph:
     def __del__(self):
         self.fileread.close()
         self.filewrite.close()
+
+def replaceChar(s):
+    s = s.replace('\n',' ').replace('\t', ' ')
+    s = re.sub('\s\s+',' ', s).lower()
+    return s
 
 if __name__ == '__main__':
     if len(sys.argv)>1:
