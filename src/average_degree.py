@@ -1,10 +1,10 @@
 # example of program that calculates the average degree of hashtags
 import json
 import collections
-from re import findall
 from datetime import datetime
 import time
 import sys
+import re
 
 class Socialgraph:
     def __init__(self,fileread,filewrite):
@@ -20,7 +20,12 @@ class Socialgraph:
             if 'text' in data and 'created_at' in data:
                 texttime = data['created_at'].encode('ascii','ignore')
                 self.curtime = time.mktime(datetime.strptime(texttime,'%a %b %d %H:%M:%S +0000 %Y').timetuple())
-                taglist = self.extractHashtag(data['text'].encode('ascii','ignore'))
+                if "entities" in data and "hashtags" in data["entities"]:
+                    taglist = self.extractHashtag(data['entities']['hashtags'])
+                else:
+                    taglist = []
+                # taglist = self.extractHashtag(data['text'].encode('ascii','ignore'))
+
                 self.log.append({'time': self.curtime,'taglist':taglist})
                 self.groupConnect(taglist)
                 self.removeLogs()
@@ -37,8 +42,15 @@ class Socialgraph:
                 break
 
 ## Extract a list of hashtags in a certain tweet text
-    def extractHashtag(self,datatext):
-        return findall(r'#\w*', datatext.lower())
+    def extractHashtag(self,data):
+        taglist = []
+        for entry in data:
+            if "text" in entry:
+                cleanentry = entry["text"].encode('ascii','ignore').lower()
+                cleanentry = cleanentry.replace('\n',' ').replace('\t', ' ')
+                cleanentry = re.sub('\s\s+',' ', cleanentry)
+                taglist.append(cleanentry)
+        return taglist
 
 ## Connect a group of hashtags altogether
     def groupConnect(self,taglist):

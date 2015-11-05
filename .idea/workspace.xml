@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6315e062-7ef7-41a2-8353-2c1b500396ee" name="Default" comment="">
       <change type="DELETED" beforePath="$PROJECT_DIR$/tweet_output/ft1.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tweet_output/ft2.txt" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/average_degree.py" afterPath="$PROJECT_DIR$/src/average_degree.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -29,7 +30,7 @@
         <entry file="file://$PROJECT_DIR$/src/tweets_cleaned.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="33" column="26" selection-start-line="33" selection-start-column="18" selection-end-line="33" selection-end-column="26" />
+              <caret line="37" column="26" selection-start-line="37" selection-start-column="26" selection-end-line="37" selection-end-column="26" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -40,8 +41,8 @@
       <file leaf-file-name="average_degree.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/average_degree.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5753425">
-              <caret line="102" column="28" selection-start-line="102" selection-start-column="28" selection-end-line="102" selection-end-column="28" />
+            <state vertical-scroll-proportion="4.3150687">
+              <caret line="119" column="20" selection-start-line="119" selection-start-column="20" selection-end-line="119" selection-end-column="20" />
               <folding>
                 <element signature="e#68#79#0" expanded="true" />
               </folding>
@@ -49,20 +50,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ft2.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tweet_output/ft2.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="run.sh" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/run.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
+            <state vertical-scroll-proportion="-5.5555553">
               <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding />
             </state>
@@ -90,6 +81,8 @@
         <option value="$PROJECT_DIR$/tweet_output/ft1.txt" />
         <option value="$PROJECT_DIR$/src/tweets_cleaned.py" />
         <option value="$PROJECT_DIR$/src/node_class.py" />
+        <option value="$PROJECT_DIR$/src/graph.py" />
+        <option value="$PROJECT_DIR$/src/text_utilities.py" />
         <option value="$PROJECT_DIR$/tweet_output/ft2.txt" />
         <option value="$PROJECT_DIR$/src/average_degree.py" />
       </list>
@@ -446,7 +439,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="36" />
+      <option name="time" value="38" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -542,44 +535,44 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/run.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/tweets_cleaned.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="33" column="26" selection-start-line="33" selection-start-column="18" selection-end-line="33" selection-end-column="26" />
+          <caret line="37" column="26" selection-start-line="37" selection-start-column="26" selection-end-line="37" selection-end-column="26" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tweet_output/ft2.txt">
+    <entry file="file://$PROJECT_DIR$/tweet_output/ft1.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="-352.64795">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tweet_output/ft1.txt">
+    <entry file="file://$PROJECT_DIR$/tweet_output/ft2.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.77040815">
-          <caret line="9236" column="0" selection-start-line="9236" selection-start-column="0" selection-end-line="9236" selection-end-column="0" />
+        <state vertical-scroll-proportion="-352.53317">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.5555553">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/average_degree.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5753425">
-          <caret line="102" column="28" selection-start-line="102" selection-start-column="28" selection-end-line="102" selection-end-column="28" />
+        <state vertical-scroll-proportion="4.3150687">
+          <caret line="119" column="20" selection-start-line="119" selection-start-column="20" selection-end-line="119" selection-end-column="20" />
           <folding>
             <element signature="e#68#79#0" expanded="true" />
           </folding>
